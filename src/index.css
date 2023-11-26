@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Lato:wght@300;400&family=Cormorant Garamond:ital,wght@0,300;1,300&family=Roboto&display=swap');
+*{
+  box-sizing:border-box;
+  font-family:'Lato', serif;
+  font-weight:300;
+  margin:0;
+  padding:0;
+}
+body{
+  background-color:rgb(244, 244, 244);
+  overflow-x:hidden;
+}
+p{
+  margin:0;
+}
+#word-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+#word-list>div>div>div{
+  display:flex;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.word-container{
+  background-color:#ffffff;
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 10%);
+  margin:.5em;
+  border-radius:.5em;
+  min-width:15rem;
+  min-height:1em;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  cursor:pointer;
+  flex-grow:0;
+  transition:all .3s ease-in-out;
+  overflow:hidden;
+}
+.word-header{
+  width:100%;
+  padding:.7em .5em;
+  display:flex;
+  justify-content:space-between;
+  font-size:2.3em;
+}
+.strong-id{
+  margin-right:.5em;
+  font-size:.5em;
+  max-width:50%;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+nav,#search-container{
+  font-size:1.5em;
+  padding:1em;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+#search-container{
+  padding-bottom:0;
+}
+#search-container input{
+  font-size:1em;
+  padding:.4em;
+  margin: 0 .5em;
+  border-radius:.2em;
+  border: solid silver 1px;
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 10%);
+  width:40%;
+}
+nav button{
+  margin:0 1em;
+  font-size:.8em;
+  padding:.2em;
+}
+.hideButton{
+  visibility: hidden;
+}
+div.hebrew{
+  display:flex;
+  flex-direction:column;
+  font-size:.4em;
+  text-align:right;
+}
+p.hebrew{
+  font-size:2.5em;
+}
+.word-info-container{
+  overflow:hidden;
+  position:fixed;
+  visibility: hidden;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  opacity:0;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(0, 0, 0, 30%);
+  transition:.5s ease;
+}
+.word-info-container.open{
+  opacity:100%;
+  visibility: visible;
+}
+.word-info-container.open>.word-info{
+  transition:.5s ease;
+  max-height:90%;
+  max-width:90%;
+}
+.word-info{
+  overflow:auto;
+  background-color:#ffffff;
+  border-radius:.5em;
+  border: solid silver 1px;
+  width:90%;
+  height:90%;
+  max-height:0;
+  max-width:0;
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 10%);
+  transition:.5s ease;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.close-button{
+  font-size:1.2em;
+  align-self:flex-end;
+  border:0;
+  background-color:transparent;
+  padding:.3em .5em;
+  user-select: none;
+  transition:.2s ease;
+  opacity:50%;
+}
+.close-button:hover{
+  opacity:100%;
+  cursor:pointer;
+}
+.word-info-header{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  font-size:2em;
+  width:100%
+}
+.words{
+  display:flex;
+  flex-direction:row;
+  width:90%;
+  max-width:900px;
+  justify-content: space-between;
+}
+.heb-word{
+  font-size:2.5em;
+  margin-top:-.35em;
+  display:flex;
+  flex-direction: column;
+  text-align: right;
+  padding-left:.5em;
+  text-wrap:nowrap;
+}
+.pronunciation{
+  margin-top:.3em;
+  font-size:.2em;
+  text-align: center;
+  display:flex;
+  flex-direction:column;
+  font-family:'Cormorant Garamond', serif;
+  justify-content: center;
+}
+.word-id{
+  font-size:1.2em;
+  display:flex;
+  flex-direction:column;
+  text-wrap: balance;
+  max-width:50%;
+}
+.derivation{
+  font-size:.4em;
+}
+.word-meaning{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+}
+.strongs-def{
+  font-size:1.5em;
+  padding-left:1.5em;
+  padding-right:1em;
+  height:100%;
+  display:flex;
+  text-wrap:balance;
+  flex-direction: column;
+  margin-top:1em;
+}
+.kjv-def{
+  max-width:50%;
+  text-wrap:balance;
+  align-self:flex-end;
+}
+.word-meaning span{
+  font-size:1.2em;
+  font-weight: bold;
+}
+.word-meaning p {
+  font-weight:600;
+  font-family:'Cormorant Garamond',serif;
+  padding-bottom:1em;
+  color:#333333;
+}
+.info-section{
+  font-size:1.4em;
+  margin-top:2em;
+  width:90%;
+  height:100%;
+  max-width:900px;
+  padding-bottom:1em;
+  overflow:auto;
+}
+
+@media screen and (max-width:860px){
+  .word-info{
+    overflow:auto;
+  }
+  .info-section{
+    overflow:visible;
+    margin:0;
+  }
+  .word-info-header>div{
+    flex-direction: column-reverse;
+    width:100%;
+  }
+  .heb-word{
+    padding-left:0;
+    text-align:center;
+    text-wrap:wrap;
+  }
+  .word-id{
+    max-width:100%;
+    margin:0 10%;
+  }
+  .kjv-def{
+    max-width:70%;
+  }
+}
+
+@media screen and (max-width:600px){
+  .strongs-def{
+    padding:0;
+    text-align: center;
+    font-size:1.2em;
+    margin:0;
+    height:auto;
+    justify-content:center;
+  }
+  .heb-word{
+    margin-top:-.6em;
+  }
+  .pronunciation{
+    font-size:.25em;
+  }
+  .strongs-def p{
+    padding:0;
+  }
+  .word-id{
+    margin-top:8%;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    text-align: right;
+  }
+  .derivation{
+    font-size:.5em;
+  }
+  .kjv-def{
+    margin-top:8%;
+    text-align: center;
+    align-self:center;
+    max-width:100%;
+  }
+  .kjv-def p{
+    text-align: center;
+  }
+  .words{
+    height:100%;
+    justify-content: space-evenly;
+  }
+  .word-info{
+    justify-content:space-between;
+  }
+  .word-info-header{
+    height:100%;
+  }
+  .word-meaning{
+    margin-top:8%;
+    justify-content:space-around;
+    padding-bottom:.8em;
+  }
+  .word-meaning p{
+    padding:0;
+  }
+}
+@media screen and (max-width:400px){
+  .word-id{
+    flex-direction:column;
+    text-align:center;
+  }
+  .heb-word{
+    font-size:2em;
+  }
+}
+
+@media screen and (min-width:760px){
+  .word-info-header>div{
+    margin-top:.5em;
+  }
+  .word-id{
+    font-size:1.4em;
+  }
+}
+
+@media screen and (min-width:1080px){
+  .word-info-container.open>.word-info{
+    max-width:1080px;
+  }
+  .word-info-header>div{
+    margin-top:1em;
+  }
+  .word-id{
+    font-size:1.6em;
+  }
+  .heb-word{
+    font-size:2.9em;
+  }
+}
